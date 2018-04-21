@@ -15,6 +15,8 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "font-awesome-rails"
 gem "devise"
+gem "faker"
+gem "awesome_print", require:"ap"
 
 group :development, :test do
   gem "sqlite3", '1.3.13'

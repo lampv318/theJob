@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421102309) do
+ActiveRecord::Schema.define(version: 20180421180259) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -65,15 +65,23 @@ ActiveRecord::Schema.define(version: 20180421102309) do
   create_table "jobs", force: :cascade do |t|
     t.integer "user_id"
     t.integer "company_id"
-    t.integer "resume_id"
+    t.string "title"
     t.string "description"
     t.string "url"
     t.string "location"
-    t.string "work_type"
+    t.string "employment_type"
     t.string "salary"
     t.integer "working_hour"
     t.float "experience"
-    t.string "bachelor"
+    t.string "education_level"
+    t.string "status", default: "Pending approval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "resume_jobs", force: :cascade do |t|
+    t.integer "resume_id"
+    t.integer "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,7 +138,7 @@ ActiveRecord::Schema.define(version: 20180421102309) do
     t.string "description"
     t.string "location"
     t.integer "salary"
-    t.integer "telephone"
+    t.string "telephone"
     t.integer "age"
     t.string "website"
     t.string "avatar"

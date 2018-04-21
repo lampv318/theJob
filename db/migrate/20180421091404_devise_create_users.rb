@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :description
       t.string :location
       t.integer :salary
-      t.integer :telephone
+      t.string :telephone
       t.integer :age
       t.string :website
       t.string :avatar

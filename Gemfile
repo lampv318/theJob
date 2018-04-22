@@ -17,6 +17,8 @@ gem "font-awesome-rails"
 gem "devise"
 gem "faker"
 gem "awesome_print", require:"ap"
+gem "jquery-rails"
+gem "bootstrap-sass"
 
 group :development, :test do
   gem "sqlite3", '1.3.13'

@@ -14,9 +14,23 @@
     <!-- END Logo -->
 
     <!-- User account -->
-    <div class="pull-right user-login">
-      <a class="btn btn-sm btn-primary" href="user-login.html">Login</a> or <a href="<%= signup_path %>">register</a>
-    </div>
+    <% if user_signed_in? %>
+      <div class="pull-right">
+        <div class="dropdown user-account">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <img src="<%= current_user.avatar %>" alt="avatar">
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><%= link_to "Logout" , logout_path , method: "delete" %></li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div class="pull-right user-login">
+        <a class="btn btn-sm btn-primary" href="<%= login_path %>">Login</a> or <a href="<%= signup_path %>">register</a>
+      </div>
+    <% end %>
     <!-- END User account -->
 
     <!-- Navigation menu -->

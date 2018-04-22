@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "pages#home"
+  
+  devise_for :users
+  devise_scope :user do
+    get "signup", to: "registrations#new"
+    post "signup", to: "registrations#create"
+  end
+
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"
   get "/help", to: "pages#help"

@@ -1,0 +1,43 @@
+ <body class="login-page">
+  <main>
+  <div class="login-block">
+    <img src="assets/img/logo.png" alt="">
+    <h1>Log into your account</h1>
+
+    <%= form_for @user, url: signup_path do |f| %>
+    <%= render "shared/error_messages" %>
+     <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="ti-user"></i></span>
+          <%= f.text_field :name, class: "form-control", placeholder: "Your name" %>
+        </div>
+      </div>
+
+      <hr class="hr-xs">
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="ti-email"></i></span>
+          <%= f.text_field :email, class: "form-control", placeholder: "Your email address" %>
+        </div>
+      </div>
+
+      <hr class="hr-xs">
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="ti-unlock"></i></span>
+          <%= f.password_field :password, class: "form-control", placeholder: "Choose a password" %>
+        </div>
+      </div>
+
+      <%= f.submit "SIGN UP", class: "btn btn-primary btn-block" %> 
+
+    <% end %>
+  </div>
+
+  <div class="login-links">
+    <p class="text-center">Already have an account? <a class="txt-brand" href="user-login.html">Login</a></p>
+  </div>
+</main>
+</body>

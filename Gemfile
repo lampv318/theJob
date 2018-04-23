@@ -19,6 +19,11 @@ gem "faker"
 gem "awesome_print", require:"ap"
 gem "jquery-rails"
 gem "bootstrap-sass"
+gem "cocoon"
+gem "carrierwave"
+gem "cloudinary"
+gem "ckeditor"
+
 
 group :development, :test do
   gem "sqlite3", '1.3.13'

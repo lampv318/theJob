@@ -1,0 +1,24 @@
+<div class = "nested-fields">
+  <div class="col-xs-12">
+    <div class="item-block">
+      <div class="item-form">
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+              <%= f.text_field :name , class: "form-control",  placeholder:"Skill name, e.g. HTML"%>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+              <div class="input-group">
+                <%= f.number_field :proficiency, class: "form-control", placeholder: "Skill proficiency, e.g. 90"  %>
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= link_to_remove_association "X", f , class: "btn btn-danger btn-float btn-remove" %>
+      </div>
+    </div>
+  </div>
+</div>

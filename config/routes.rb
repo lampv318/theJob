@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     delete "logout", to: "sessions#destroy"
   end
 
+  resources :users do 
+    resources :resumes
+  end
+
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"
   get "/help", to: "pages#help"

@@ -1,5 +1,6 @@
 class TagList < ApplicationRecord
   belongs_to :user
+  belongs_to :resume
 
-  validates :name, presence: :true, length: {maximum: 10}
+  validates :tag_name, length: {maximum: 10}
 end

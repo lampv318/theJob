@@ -5,6 +5,8 @@ class Resume < ApplicationRecord
   has_many :skills, dependent: :destroy
   has_many :resume_jobs
   has_many :jobs, through: :resume_jobs
+  has_many :tag_lists, dependent: :destroy
+  has_many :basic_infos
   accepts_nested_attributes_for :skills, allow_destroy: true
   accepts_nested_attributes_for :work_experiences, allow_destroy: true
   accepts_nested_attributes_for :educations, allow_destroy: true

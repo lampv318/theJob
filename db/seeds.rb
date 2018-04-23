@@ -7,14 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do |n|
-  User.create! email: Faker::Internet.unique.email,
-    password: "12345678",
-    password_confirmation: "12345678",
-    name: Faker::Name.name , avatar: Faker::Avatar.image,
-    headline: Faker::Job.title, description: Faker::Lorem.paragraph,
-    location: Faker::Address.state, website: Faker::Internet.url,
-    salary: Faker::Number.between(10, 150), age: Faker::Number.between(18, 50), 
-    telephone: Faker::PhoneNumber.phone_number
+  User.create! email: Faker::Internet.unique.email, password: "12345678",
+    password_confirmation: "12345678", account_name: Faker::Name.name
+end
+
+10.times do |n|
+  BasicInfo.create user_id: "#{n}", resume_id: "#{n}", full_name: Faker::Name.name,
+    avatar: Faker::Avatar.image, headline: Faker::Job.title, 
+    description: Faker::Lorem.paragraph, location: Faker::Address.state,
+    website: Faker::Internet.url, salary: Faker::Number.between(10, 150), 
+    age: Faker::Number.between(18, 50), phone: Faker::PhoneNumber.phone_number,
+    email_address: Faker::Internet.email
 end
 
 Company.create name: "FaceBook", headline: Faker::Company.catch_phrase,
@@ -48,7 +51,7 @@ end
 end
 
 10.times do |n|
-  TagList.create name: Faker::Job.key_skill, user_id: "#{n}"
+  TagList.create tag_name: Faker::Job.key_skill, user_id: "#{n}", resume_id: "#{n}"
 end
 
 res = Resume.first

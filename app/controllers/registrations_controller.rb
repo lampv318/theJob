@@ -8,14 +8,13 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new user_param
 
     if @user.save
-      # flash[:success] = "User have been created !"
+      sign_in user
       redirect_to root_path
     else
-      # flash[:danger] = "User have not been created !"
       render :new
     end
   end
-
+  
   private
 
   attr_reader :user

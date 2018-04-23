@@ -7,18 +7,20 @@ class ResumesController < ApplicationController
 
   def new
     @resume = current_user.resumes.new
+    @resume.socials.build
     @resume.skills.build
     @resume.work_experiences.build
+    @resume.educations.build
   end
 
   def create
     @resume = current_user.resumes.new resume_params
     if resume.save
-      flash[:sucess] = "Resume has been create !"
+      flash[:success] = "Resume has been created !"
       redirect_to root_path
     else
-      flash[:alert] = "Fail!"
-      render :new
+      flash[:alert] = "Some thing went wrong !"
+      redirect_to new_user_resume_path(current_user)
     end
   end
 
@@ -28,7 +30,9 @@ class ResumesController < ApplicationController
 
   def resume_params
     params.require(:resume).permit skills_attributes: %i( name proficiency ), 
-      work_experiences_attributes: %i(company position date_from date_to description)
+      work_experiences_attributes: %i(company position date_from date_to description),
+      educations_attributes: %i(degree major school_name description date_from date_to),
+      socials_attributes: %i(facebook_link google_link twitter_link github_link)
   end
 
 

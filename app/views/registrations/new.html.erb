@@ -5,7 +5,7 @@
     <h1>Log into your account</h1>
 
     <%= form_for @user, url: signup_path do |f| %>
-    <%= render "shared/error_messages" %>
+    <%= render "shared/error_messages", object: f.object %>
      <div class="form-group">
         <div class="input-group">
           <span class="input-group-addon"><i class="ti-user"></i></span>

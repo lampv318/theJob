@@ -15,4 +15,8 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, 
     format: {with: VALID_EMAIL_REGEX}
   validates :name, presence: true
+
+  def correct_user? user
+    self == user
+  end
 end

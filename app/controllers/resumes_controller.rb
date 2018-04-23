@@ -7,10 +7,12 @@ class ResumesController < ApplicationController
 
   def new
     @resume = current_user.resumes.new
+    @resume.basic_infos.build
     @resume.socials.build
     @resume.skills.build
     @resume.work_experiences.build
     @resume.educations.build
+    @resume.tag_lists.build
   end
 
   def create
@@ -32,7 +34,10 @@ class ResumesController < ApplicationController
     params.require(:resume).permit skills_attributes: %i( name proficiency ), 
       work_experiences_attributes: %i(company position date_from date_to description),
       educations_attributes: %i(degree major school_name description date_from date_to),
-      socials_attributes: %i(facebook_link google_link twitter_link github_link)
+      socials_attributes: %i(facebook_link google_link twitter_link github_link),
+      basic_infos_attributes: %i(user_id full_name headline description avatar location 
+        website salary age phone email_address),
+      tag_lists_attributes: %i(user_id tag_name)
   end
 
 

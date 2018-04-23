@@ -7,5 +7,5 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "please log in "
     end
   end
-  
+
 end

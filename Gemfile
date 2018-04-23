@@ -23,10 +23,10 @@ gem "cocoon"
 gem "carrierwave"
 gem "cloudinary"
 gem "ckeditor"
-
+gem "mini_magick", "4.7.0"
 
 group :development, :test do
-  gem "sqlite3", '1.3.13'
+  gem "sqlite3", "1.3.13"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "capybara", "~> 2.13"
   gem "selenium-webdriver"

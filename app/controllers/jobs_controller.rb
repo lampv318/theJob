@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :check_logged_in, only: %i(new create)
 
   def index
-    @jobs = Job.page params[:page]
+    @jobs = Job.by_default.page params[:page]
   end
 
   def new 

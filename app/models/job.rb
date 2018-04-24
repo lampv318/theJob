@@ -3,6 +3,8 @@ class Job < ApplicationRecord
   ATTRIBUTES_PARAMS = %i(user_id  company_name title description url location 
   employment_type salary working_hour experience education_level).freeze
 
+  scope :by_default, lambda { order created_at: :desc }
+
   has_many :resume_jobs
   has_many :resumes, through: :resume_jobs
   has_many :job_details, dependent: :destroy

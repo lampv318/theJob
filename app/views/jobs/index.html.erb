@@ -151,7 +151,9 @@
         <div class= "text-center">
           <%= paginate @jobs %>
         </div>
-          <%= render @jobs %>
+        <% @jobs.each do |job| %>
+          <%= render "job", job: job %>
+        <% end %>
         <div class= "text-center">
           <%= paginate @jobs %>
         </div>

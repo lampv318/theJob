@@ -1,8 +1,12 @@
 class JobsController < ApplicationController
   before_action :check_logged_in, only: %i(new create)
+  before_action :find_job, except: %i(new index create)
 
   def index
     @jobs = Job.by_default.page params[:page]
+  end
+
+  def show
   end
 
   def new 
@@ -28,6 +32,14 @@ class JobsController < ApplicationController
   def job_params
     params.require(:job).permit Job::ATTRIBUTES_PARAMS,
      job_details_attributes: %i(content)
+  end
+
+  def find_job
+    @job = Job.find_by id: params[:id]
+    if @job.nil?
+      flash[:danger] = "Can't find Job"
+      redirect_to root_url
+    end
   end
   
 end

@@ -44,22 +44,24 @@
         <a href="#">Position</a>
         <ul>
           <li><a href="job-list-1.html">Browse jobs - 1</a></li>
-          <li><a href="job-list-2.html">Browse jobs - 2</a></li>
-          <li><a href="job-list-3.html">Browse jobs - 3</a></li>
           <li><a href="job-detail.html">Job detail</a></li>
           <li><a href="job-apply.html">Apply for job</a></li>
-          <li><a href="job-add.html">Post a job</a></li>
-          <li><a href="job-manage.html">Manage jobs</a></li>
-          <li><a href="job-candidates.html">Candidates</a></li>
+          <% if user_signed_in? %>
+            <li><a href="<%= new_user_job_path(current_user) %>">Post a job</a></li>
+            <li><a href="job-manage.html">Manage jobs</a></li>
+            <li><a href="job-candidates.html">Candidates</a></li>
+          <% end %>
         </ul>
       </li>
       <li>
         <a href="#">Resume</a>
         <ul>
           <li><a href="resume-list.html">Browse resumes</a></li>
-          <li><a href="resume-detail.html">Resume detail</a></li>
-          <li><a href="resume-add.html">Create a resume</a></li>
-          <li><a href="resume-manage.html">Manage resumes</a></li>
+          <% if user_signed_in? %>
+            <li><a href="resume-detail.html">Resume detail</a></li>
+            <li><a href="<%= new_user_resume_path(current_user) %>">Create a resume</a></li>
+            <li><a href="resume-manage.html">Manage resumes</a></li>
+          <% end %>
         </ul>
       </li>
       <li>

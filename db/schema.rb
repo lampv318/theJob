@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20180423093534) do
 
   create_table "jobs", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "company_id"
+    t.string "company_name"
     t.string "title"
     t.string "description"
     t.string "url"

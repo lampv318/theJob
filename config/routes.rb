@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :resumes
+    resources :jobs
   end
 
   get "/contact", to: "pages#contact"

@@ -41,7 +41,7 @@ Company.create name: "Microsoft", headline: Faker::Company.catch_phrase,
   email: Faker::Internet.email, avatar: "assets/img/logo-microsoft.jpg"
 
 20.times do |n|
-  Job.create user_id: rand(1..10), company_id: rand(1..3),
+  Job.create user_id: rand(1..10), 
   description: Faker::Lorem.paragraph, location: Faker::Address.state,
   employment_type: Faker::Job.employment_type, salary: Faker::Number.between(10, 150),
   education_level: Faker::Job.education_level, title: Faker::Job.title

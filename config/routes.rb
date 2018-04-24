@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :resumes
-    resources :jobs, only: [:new, :create, :index]
+    resources :jobs
   end
 
-  resources :jobs, only: [:index]
+  resources :jobs, only: [:index, :show]
 
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"

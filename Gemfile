@@ -24,6 +24,7 @@ gem "carrierwave"
 gem "cloudinary"
 gem "ckeditor"
 gem "mini_magick", "4.7.0"
+gem "kaminari"
 
 group :development, :test do
   gem "sqlite3", "1.3.13"

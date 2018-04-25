@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @jobs = Job.by_default.limit(5)
+    @jobs = Job.all.by_default
   end
 
   def contact

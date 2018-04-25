@@ -59,7 +59,7 @@
           <% if user_signed_in? %>
             <li><a href="resume-detail.html">Resume detail</a></li>
             <li><a href="<%= new_user_resume_path(current_user) %>">Create a resume</a></li>
-            <li><a href="resume-manage.html">Manage resumes</a></li>
+            <li><a href="<%= manager_resumes_path%>">Manage resumes</a></li>
           <% end %>
         </ul>
       </li>

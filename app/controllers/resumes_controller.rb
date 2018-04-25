@@ -30,6 +30,25 @@ class ResumesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @resume.update_attributes resume_params
+      flash[:success] = "Update success"
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @resume.delete
+      flash[:sucess] = "Delete completed"
+      redirect_to root_path
+    end
+  end
+
   private 
 
   attr_reader :resume

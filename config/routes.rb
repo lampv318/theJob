@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get "/blog-post", to: "pages#blog-post"
   get "/pricing", to: "pages#pricing"
   get "/manager-jobs", to: "manager_jobs#index"
+  get "/manager-resumes", to: "manager_resumes#index"
 end

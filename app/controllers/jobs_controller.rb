@@ -25,6 +25,25 @@ class JobsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @job.update_attributes job_params
+      flash[:success] = "Update success"
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @job.delete
+      flash[:sucess] = "Delete completed"
+      redirect_to root_path
+    end
+  end
+
   private 
 
   attr_reader :job

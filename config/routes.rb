@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do 
     resources :resumes
-    resources :jobs
+    resources :jobs, except: [:index]
   end
 
   resources :jobs, only: [:index, :show]
@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get "/blog", to: "pages#blog"
   get "/blog-post", to: "pages#blog-post"
   get "/pricing", to: "pages#pricing"
+  get "/manager-jobs", to: "manager_jobs#index"
 end

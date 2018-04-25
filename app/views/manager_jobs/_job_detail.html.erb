@@ -1,0 +1,23 @@
+<div class="col-xs-12">
+  <div class="item-block">
+    <header>
+      <a href="company-detail.html"><img src="assets/img/logo-google.jpg" alt=""></a>
+      <div class="hgroup">
+        <h4><a href="job-detail.html"><%= job.title %></a></h4>
+        <h5><a href="company-detail.html"><%= job.company_name %></a></h5>
+      </div>
+      <div class="header-meta">
+        <span class="location"><%= job.location %></span>
+        <time datetime="2016-03-10 20:00"><%= time_ago_in_words job.updated_at %></time>
+      </div>
+    </header>
+    <footer>
+      <p class="status"><strong>Status:</strong><%= job.status %></p>
+      <div class="action-btn">
+        <a class="btn btn-xs btn-gray" href="<%= edit_user_job_path(current_user,job.id) %>">Edit</a>
+        <a class="btn btn-xs btn-danger" data-confirm="You sure" rel = "nofollow" data-method="delete"
+          href="<%= user_job_path(current_user,job.id)%>">Delete</a>
+      </div>
+    </footer>
+  </div>
+</div>

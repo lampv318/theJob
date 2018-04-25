@@ -1,0 +1,26 @@
+<div class="item-block">
+  <header>
+    <a href="<%= resume_path(resume.id) %>"><img class="resume-avatar" 
+      src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt=""></a>
+    <div class="hgroup">
+      <h4><a href="<%= resume_path(resume.id) %>"><%= resume.basic_infos.first.full_name %></a></h4>
+      <h5><%= resume.basic_infos.first.headline %>r</h5>
+    </div>
+    <div class="header-meta">
+      <span class="location"><%= resume.basic_infos.first.location %></span>
+      <span class="rate">$<%= resume.basic_infos.first.salary %> per hour</span>
+    </div>
+  </header>
+
+  <footer>
+    <p class="status"><strong>Updated on:</strong><%= time_ago_in_words resume.updated_at %></p>
+    <div class="action-btn">
+      <a class="btn btn-xs btn-gray" href="<%= edit_user_resume_path(current_user,resume.id) %>">Edit</a>
+      <%= form_tag url: apply_job_path, method: :post do%>
+        <%= hidden_field_tag :resume_id , resume.id %>
+        <%= submit_tag "select", class: "btn btn-xs btn-success" %>
+      <% end %>
+      <!-- <a class="btn btn-xs btn-success" href="<%=  %>">Select</a> -->
+    </div>
+  </footer>
+</div>

@@ -44,6 +44,23 @@ class JobsController < ApplicationController
     end
   end
 
+  def apply
+    @resumes = current_user.resumes.by_default.page params[:page]
+  end
+
+  def create_apply
+    @resume = Resume.find_by id: params[:resume_id]
+    if @job.resumes.find_by id: params[:resume_id]
+      flash[:danger] = "You have applied , Please come back later"
+      redirect_to root_path
+    else
+      if @resume.apply @job
+        flash[:success] = "Congratulation! You have applied job successfully !"
+        redirect_to root_path
+      end
+    end
+  end
+
   private 
 
   attr_reader :job

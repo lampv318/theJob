@@ -19,6 +19,8 @@ class Resume < ApplicationRecord
 
   validates :user_id, presence: true
 
+  scope :by_default, lambda { order created_at: :desc }
+
   def apply job
     self.jobs << job
   end

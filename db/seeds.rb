@@ -55,6 +55,10 @@ end
   TagList.create tag_name: Faker::Job.key_skill, user_id: "#{n}", resume_id: "#{n}"
 end
 
+10.times do |n| 
+  Education.create major: "Bachelor", school_name: Faker::Educator.university, resume_id: "#{n}"
+end
+
 res = Resume.first
 jobs = Job.all
 job = jobs[2..19]

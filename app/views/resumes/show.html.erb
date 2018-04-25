@@ -1,0 +1,178 @@
+<!-- Page header -->
+<header class="page-header bg-img" style="background-image: url(assets/img/bg-banner1.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <img src="assets/img/avatar.jpg" alt="">
+      </div>
+
+      <div class="col-xs-12 col-sm-8 header-detail">
+        <div class="hgroup">
+          <h1><%= @resume.basic_infos.first.full_name %></h1>
+          <h3><%= @resume.basic_infos.first.headline %></h3>
+        </div>
+        <hr>
+        <p class="lead"><%= @resume.basic_infos.first.description %></p>
+
+        <ul class="details cols-2">
+          <li>
+            <i class="fa fa-map-marker"></i>
+            <span><%= @resume.basic_infos.first.location %></span>
+          </li>
+
+          <li>
+            <i class="fa fa-globe"></i>
+            <a href="#"><%= @resume.basic_infos.first.website %></a>
+          </li>
+
+          <li>
+            <i class="fa fa-money"></i>
+            <span>$<%= @resume.basic_infos.first.salary %> / hour</span>
+          </li>
+
+          <li>
+            <i class="fa fa-birthday-cake"></i>
+            <span><%= @resume.basic_infos.first.age %> years-old</span>
+          </li>
+
+          <li>
+            <i class="fa fa-phone"></i>
+            <span><%= @resume.basic_infos.first.phone %></span>
+          </li>
+
+          <li>
+            <i class="fa fa-envelope"></i>
+            <a href="#"><%= @resume.basic_infos.first.email_address %>e</a>
+          </li>
+        </ul>
+
+        <div class="tag-list">
+          <% @resume.tag_lists.each do |tag_list| %>
+            <span><%= tag_list.tag_name %></span> 
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+
+      <ul class="social-icons">
+        <li><a class="facebook" href="<%= @resume.socials.first.facebook_link %>"><i class="fa fa-facebook"></i></a></li>
+        <li><a class="twitter" href="<%= @resume.socials.first.twitter_link %>"><i class="fa fa-twitter"></i></a></li>
+        <li><a class="dribbble" href="<%= @resume.socials.first.google_link %>"><i class="fa fa-google"></i></a></li>
+        <li><a class="instagram" href="<%= @resume.socials.first.github_link %>"><i class="fa fa-github"></i></a></li>
+      </ul>
+
+      <div class="action-buttons">
+        <a class="btn btn-gray" href="#">Download CV</a>
+        <a class="btn btn-success" data-toggle="modal" data-target="#modal-contact" href="#">Contact me</a>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- END Page header -->
+
+
+<!-- Main container -->
+<main>
+
+
+  <!-- Education -->
+  <section>
+    <div class="container">
+
+      <header class="section-header">
+        <span>Latest degrees</span>
+        <h2>Education</h2>
+      </header>
+
+      <div class="row">
+      <% @resume.educations.each do |education| %>
+        <div class="col-xs-12">
+          <div class="item-block">
+            <header>
+              <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+              <div class="hgroup">
+                <h4><%= education.degree %><small><%= education.major %></small></h4>
+                <h5><%= education.school_name%></h5>
+              </div>
+              <h6 class="time"><%= education.date_from %>- <% education.date_to %></h6>
+            </header>
+            <div class="item-body">
+              <p><%= education.description %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+
+    </div>
+  </section>
+  <!-- END Education -->
+
+  <!-- Work Experience -->
+  <section class="bg-alt">
+    <div class="container">
+      <header class="section-header">
+        <span>Past positions</span>
+        <h2>Work Experience</h2>
+      </header>
+      
+      <div class="row">
+
+      <% @resume.work_experiences.each do |work_experience| %>
+        <!-- Work item -->
+        <div class="col-xs-12">
+          <div class="item-block">
+            <header>
+              <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+              <div class="hgroup">
+                <h4><%= work_experience.company %></h4>
+                <h5><%= work_experience.position %></h5>
+              </div>
+              <h6 class="time"><%= work_experience.date_from %>- <% work_experience.date_to %></h6>
+            </header>
+            <div class="item-body">
+              <p>Responsibilities:</p>
+              <%= raw work_experience.description %>
+            </div>
+          </div>
+        </div>
+        <!-- END Work item -->
+        <% end %>
+      </div>
+
+    </div>
+  </section>
+  <!-- END Work Experience -->
+
+
+  <!-- Skills -->
+  <section>
+    <div class="container">
+      <header class="section-header">
+        <span>Expertise Areas</span>
+        <h2>Skills</h2>
+      </header>
+      
+      <br>
+      <ul class="skills cols-3">
+        <% @resume.skills.each do |skill| %>
+          <li>
+            <div>
+              <span class="skill-name"><%= skill.name%></span>
+              <span class="skill-value"><%= skill.proficiency %>%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width: <%= skill.proficiency %>%;"></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </section>
+  <!-- END Skills -->
+
+</main>
+<!-- END Main container -->

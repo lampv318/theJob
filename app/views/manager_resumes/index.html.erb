@@ -1,0 +1,22 @@
+<header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner2.jpg)">
+  <div class="container no-shadow">
+    <h1 class="text-center">Manage your resumes</h1>
+    <p class="lead text-center">Here's the list of your created resumes. You can edit or delete them, or even add a new one.</p>
+  </div>
+</header>
+
+<main>
+  <section class="no-padding-top bg-alt">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 text-right">
+          <br>
+          <a class="btn btn-primary btn-sm" href="<%= new_user_job_path(current_user) %>">Add new resume</a>
+        </div>
+        <% @resumes.each do |resume| %>
+          <%= render "resume" , resume: resume%>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>

@@ -4,7 +4,7 @@
       <div class="container">
         <div class="col-xs-12">
           <br><br>
-          <h2>We offer <mark>1,259</mark> job vacancies right now!</h2>
+          <h2>We offer <mark><%= @jobs.count %></mark> job vacancies right now!</h2>
           <h5 class="font-alt">Find your desire one in a minute</h5>
           <br><br><br>
           <form class="header-job-search">
@@ -39,7 +39,7 @@
           </header>
 
           <div class="row item-blocks-connected">
-            <% @jobs.each do |job| %>
+            <% @jobs.limit(5).each do |job| %>
               <%= render "components/job/job_item", job: job %>
             <% end %>
           </div>
@@ -120,37 +120,37 @@
           </header>
 
           <div class="category-grid">
-            <a href="job-list-1.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-laptop"></i>
               <h6>Technology</h6>
               <p>Designer, Developer, IT Service, Front-end developer, Project management</p>
             </a>
 
-            <a href="job-list-2.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-line-chart"></i>
               <h6>Accounting</h6>
               <p>Finance, Tax service, Payroll manager, Book keeper, Human resource</p>
             </a>
 
-            <a href="job-list-3.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-medkit"></i>
               <h6>Medical</h6>
               <p>Doctor, Nurse, Hospotal, Dental service, Massagist</p>
             </a>
 
-            <a href="job-list-1.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-cutlery"></i>
               <h6>Food</h6>
               <p>Restaurant, Food service, Coffe shop, Cashier, Waitress</p>
             </a>
 
-            <a href="job-list-2.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-newspaper-o"></i>
               <h6>Media</h6>
               <p>Journalism, Newspaper, Reporter, Writer, Cameraman</p>
             </a>
 
-            <a href="job-list-3.html">
+            <a href="<%= jobs_path %>">
               <i class="fa fa-institution"></i>
               <h6>Government</h6>
               <p>Federal, Law, Human resource, Manager, Biologist</p>

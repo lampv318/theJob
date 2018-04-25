@@ -36,7 +36,6 @@
       </div>
     <% end %>
     <!-- END User account -->
-
     <!-- Navigation menu -->
     <ul class="nav-menu">
       <%= link_to "Home", root_path %>
@@ -48,6 +47,10 @@
             <li><a href="<%= new_user_job_path(current_user) %>">Post a job</a></li>
             <li><a href="<%= manager_jobs_path%>">Manage jobs</a></li>
             <li><a href="job-candidates.html">Candidates</a></li>
+          <% else %>
+            <li><a href="<%= login_path %>">Post a job</a></li>
+            <li><a href="<%= login_path %>">Manage jobs</a></li>
+            <li><a href="<%= login_path %>">Candidates</a></li>
           <% end %>
         </ul>
       </li>
@@ -56,21 +59,15 @@
         <ul>
           <li><a href="<%= resumes_path %>">Browse resumes</a></li>
           <% if user_signed_in? %>
-            <li><a href="resume-detail.html">Resume detail</a></li>
             <li><a href="<%= new_user_resume_path(current_user) %>">Create a resume</a></li>
             <li><a href="<%= manager_resumes_path%>">Manage resumes</a></li>
+          <% else %>
+            <li><a href="<%= login_path %>">Create a resume</a></li>
+            <li><a href="<%= login_path%>">Manage resumes</a></li>
           <% end %>
         </ul>
       </li>
-      <li>
-        <a href="#">Company</a>
-        <ul>
-          <li><a href="company-list.html">Browse companies</a></li>
-          <li><a href="company-detail.html">Company detail</a></li>
-          <li><a href="company-add.html">Create a company</a></li>
-          <li><a href="company-manage.html">Manage companies</a></li>
-        </ul>
-      </li>
+      <li><%= link_to "Pricing", pricing_path%></li>
       <li>
         <a href="#">Pages</a>
         <ul>
@@ -79,14 +76,10 @@
           <li><%= link_to "About", about_path %></li>
           <li><%= link_to "Contact", contact_path %></li>
           <li><%= link_to "FAQ", help_path %></li>
-          <li><%= link_to "Pricing", pricing_path%></li>
-          <!-- <li><a href="page-typography.html">Typography</a></li> -->
-          <!-- <li><a href="page-ui-elements.html">UI elements</a></li> -->
         </ul>
       </li>
     </ul>
     <!-- END Navigation menu -->
-
   </div>
 </nav>
 <!-- END Navigation bar -->

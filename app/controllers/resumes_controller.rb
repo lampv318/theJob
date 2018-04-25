@@ -2,7 +2,7 @@ class ResumesController < ApplicationController
   before_action :check_logged_in, only: %i(new create)
 
   def index
-    @resume = Resume.all
+    @resumes = Resume.by_default.page params[:page]
   end
 
   def new

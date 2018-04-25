@@ -1,8 +1,12 @@
 class ResumesController < ApplicationController
   before_action :check_logged_in, only: %i(new create)
+  before_action :find_resume, except: %i(new index create)
 
   def index
     @resumes = Resume.by_default.page params[:page]
+  end
+
+  def show
   end
 
   def new
@@ -40,5 +44,12 @@ class ResumesController < ApplicationController
       tag_lists_attributes: %i(user_id tag_name)
   end
 
+    def find_resume
+    @resume = Resume.find_by id: params[:id]
+    if @resume.nil?
+      flash[:danger] = "Can't find Resume"
+      redirect_to root_url
+    end
+  end
 
 end

@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
-  resources :jobs, only: [:index, :show]
+  resources :jobs, only: [:index, :show] do
+    member do
+      get :apply
+      post :apply, to: "jobs#create_apply"
+    end
+  end
   resources :resumes, only: [:index, :show]
 
   get "/contact", to: "pages#contact"

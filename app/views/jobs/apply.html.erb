@@ -1,0 +1,52 @@
+<header class="page-header bg-img size-lg" style="background-image: 
+  url(https://raw.githubusercontent.com/lampv318/image/master/bg-facts.jpg)">
+  <div class="container no-shadow">
+    <h1 class="text-center">Apply for the job</h1>
+    <p class="lead text-center">Apply with your online resume, create new resume for the job, or make a custom application.</p>
+    <hr>
+    <!-- Job detail -->
+    <a class="item-block item-block-flat" href="<%= job_path(@job.id) %>">
+      <header>
+        <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+        <div class="hgroup">
+          <h4><%= @job.title %></h4>
+          <h5><%= @job.company_name %></h5>
+        </div>
+        <div class="header-meta">
+          <span class="location"><%= @job.location %></span>
+          <time datetime="2016-03-10 20:00"><%= time_ago_in_words @job.updated_at %>ago</time>
+        </div>
+      </header>
+    </a>
+    <!-- END Job detail -->
+    <div class="button-group">
+      <div class="action-buttons">
+        <a class="btn btn-primary" href="#sec-resume">Apply with a resume</a>
+      </div>
+    </div>
+
+  </div>
+</header>
+<!-- Main container -->
+<main>
+    <!-- Apply with resume -->
+    <section id="sec-resume">
+      <div class="container">
+        <header class="section-header">
+          <span>Apply with a resume</span>
+          <h2>Select a resume</h2>
+          <p>Applied for this job with one of your online available resumes</p>
+        </header>
+        <% @resumes.each do |resume| %>
+          <%= render "resume_item", resume: resume %>
+        <% end %>
+        <br>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <a class="btn btn-block btn-primary" href="<%= new_user_resume_path(current_user) %>">Add new resume</a>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+<!-- END Main container -->

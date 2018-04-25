@@ -1,75 +1,77 @@
-    <!-- Page header -->
-    <header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner2.jpg)">
-      <div class="container">
-        <div class="header-detail">
-          <img class="logo" src="assets/img/logo-google.jpg" alt="">
-          <div class="hgroup">
-            <h1><%= @job.title %></h1>
-            <h3><a href="#"><%= @job.company_name %></a></h3>
-          </div>
-          <time datetime="2016-03-03 20:00"><%= time_ago_in_words @job.created_at %></time>
-          <hr>
-          <p class="lead"><%= @job.description %></p>
+<!-- Page header -->
+<header class="page-header bg-img size-lg" style="background-image: 
+  url(https://raw.githubusercontent.com/lampv318/image/master/bg-facts.jpg)">
+  <div class="container">
+    <div class="header-detail">
+      <img class="logo" src="assets/img/logo-google.jpg" alt="">
+      <div class="hgroup">
+        <h1><%= @job.title %></h1>
+        <h3><a href="#"><%= @job.company_name %></a></h3>
+      </div>
+      <time datetime="2016-03-03 20:00"><%= time_ago_in_words @job.created_at %></time>
+      <hr>
+      <p class="lead"><%= @job.description %></p>
 
-          <ul class="details cols-3">
-            <li>
-              <i class="fa fa-map-marker"></i>
-              <span><%= @job.location %></span>
-            </li>
+      <ul class="details cols-3">
+        <li>
+          <i class="fa fa-map-marker"></i>
+          <span><%= @job.location %></span>
+        </li>
 
-            <li>
-              <i class="fa fa-briefcase"></i>
-              <span><%= @job.employment_type %></span>
-            </li>
+        <li>
+          <i class="fa fa-briefcase"></i>
+          <span><%= @job.employment_type %></span>
+        </li>
 
-            <li>
-              <i class="fa fa-money"></i>
-              <span><%= @job.salary %></span>
-            </li>
+        <li>
+          <i class="fa fa-money"></i>
+          <span><%= @job.salary %></span>
+        </li>
 
-            <li>
-              <i class="fa fa-clock-o"></i>
-              <span><%= @job.working_hour %></span>
-            </li>
+        <li>
+          <i class="fa fa-clock-o"></i>
+          <span><%= @job.working_hour %></span>
+        </li>
 
-            <li>
-              <i class="fa fa-flask"></i>
-              <span><%= @job.experience %></span>
-            </li>
+        <li>
+          <i class="fa fa-flask"></i>
+          <span><%= @job.experience %></span>
+        </li>
 
-            <li>
-              <i class="fa fa-certificate"></i>
-              <a href="#"><%= @job.education_level %></a>
-            </li>
-          </ul>
+        <li>
+          <i class="fa fa-certificate"></i>
+          <a href="#"><%= @job.education_level %></a>
+        </li>
+      </ul>
 
-          <div class="button-group">
-            <ul class="social-icons">
-              <li class="title">Share on</li>
-              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-              <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>
+      <div class="button-group">
+        <ul class="social-icons">
+          <li class="title">Share on</li>
+          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+        </ul>
 
-            <div class="action-buttons">
-              <a class="btn btn-primary" href="#">Apply with linkedin</a>
-              <a class="btn btn-success" href="job-apply.html">Apply now</a>
-            </div>
-          </div>
-
+        <div class="action-buttons">
+          <a class="btn btn-success" href="<%= apply_job_path %>">Apply now</a>
         </div>
       </div>
-    </header>
-    <!-- END Page header -->
-    <!-- Main container -->
-    <main>
-      <!-- Job detail -->
-      <section>
-        <div class="container">
-          <%= raw @job.job_details.first.content %>
-        </div>
-      </section>
-      <!-- END Job detail -->
-    </main>
-    <!-- END Main container -->
+
+    </div>
+  </div>
+</header>
+<!-- END Page header -->
+<!-- Main container -->
+<main>
+  <!-- Job detail -->
+  <section>
+    <div class="container">
+      <% if !@job.job_details.first.nil? %>
+        <%= @job.job_details.first.content %>
+      <% end %>
+    </div>
+  </section>
+  <!-- END Job detail -->
+</main>
+<!-- END Main container -->

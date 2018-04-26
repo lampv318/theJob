@@ -1,10 +1,10 @@
 <div class="col-xs-12">
   <div class="item-block">
     <header>
-      <a href="company-detail.html"><img src="assets/img/logo-google.jpg" alt=""></a>
+      <a href="<%= manager_job_path(job) %>"><img src="assets/img/logo-google.jpg" alt=""></a>
       <div class="hgroup">
-        <h4><a href="job-detail.html"><%= job.title %></a></h4>
-        <h5><a href="company-detail.html"><%= job.company_name %></a></h5>
+        <h4><a href="<%= manager_job_path(job) %>"><%= job.title %></a></h4>
+        <h5><a href="<%= manager_job_path(job) %>"><%= job.company_name %></a></h5>
       </div>
       <div class="header-meta">
         <span class="location"><%= job.location %></span>

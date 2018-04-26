@@ -2,9 +2,7 @@
   <div class="col-xs-12">
     <div class="item-block">
       <div class="item-form">
-
         <button class="btn btn-danger btn-float btn-remove"><i class="ti-close"></i></button>
-
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="form-group">
@@ -12,12 +10,10 @@
               <span class="help-block">Please choose a square logo</span>
             </div>
           </div>
-
           <div class="col-xs-12 col-sm-8">
             <div class="form-group">
               <%= f.text_field :degree, class: "form-control", placeholder: "Degree, e.g. Bachelor" %>
             </div>
-
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Major, e.g. Computer Science">
             </div>
@@ -25,7 +21,6 @@
               <%= f.text_field :school_name, class: "form-control",
                placeholder:"School name, e.g. Massachusetts Institute of Technology" %>
             </div>
-
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon">Date from</span>
@@ -34,7 +29,6 @@
                 <%= f.date_field :date_to , class: "form-control", placeholder: "e.g. 2016" %>
               </div>
             </div>
-
             <div class="form-group">
               <%= f.text_area :description, placeholder: "Short description",  cols: "76" ,rows: "3" %>
             </div>

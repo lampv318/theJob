@@ -14,7 +14,7 @@
           <a class="btn btn-primary btn-sm" href="<%= new_user_job_path(current_user) %>">Add new resume</a>
         </div>
         <% @resumes.each do |resume| %>
-          <%= render "resume" , resume: resume%>
+          <%= render "components/resumes/resume_item_type2" , resume: resume%>
         <% end %>
       </div>
     </div>

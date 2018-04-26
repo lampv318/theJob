@@ -45,7 +45,7 @@
           <li><a href="<%= jobs_path %>">Browse jobs </a></li>
           <% if user_signed_in? %>
             <li><a href="<%= new_user_job_path(current_user) %>">Post a job</a></li>
-            <li><a href="<%= manager_jobs_path%>">Manage jobs</a></li>
+            <li><a href="<%= manager_jobs_path %>">Manage jobs</a></li>
             <li><a href="job-candidates.html">Candidates</a></li>
           <% else %>
             <li><a href="<%= login_path %>">Post a job</a></li>

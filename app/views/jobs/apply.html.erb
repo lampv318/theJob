@@ -38,7 +38,7 @@
           <p>Applied for this job with one of your online available resumes</p>
         </header>
         <% @resumes.each do |resume| %>
-          <%= render "resume_item", resume: resume %>
+          <%= render "components/resumes/resume_item_type3", resume: resume %>
         <% end %>
         <br>
         <div class="row">

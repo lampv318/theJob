@@ -156,7 +156,7 @@
           <%= paginate @resumes %>
         </div>
         <% @resumes.each do |resume| %>
-          <%= render "resume", resume: resume %>
+          <%= render "components/resumes/resume_item_type1", resume: resume %>
         <% end %>
       </div>
       <div class = "text-center">

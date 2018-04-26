@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
   resources :resumes, only: [:index, :show]
+  resources :manager_jobs, only: [:index, :show]
 
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"
@@ -29,6 +30,5 @@ Rails.application.routes.draw do
   get "/blog", to: "pages#blog"
   get "/blog-post", to: "pages#blog-post"
   get "/pricing", to: "pages#pricing"
-  get "/manager-jobs", to: "manager_jobs#index"
   get "/manager-resumes", to: "manager_resumes#index"
 end

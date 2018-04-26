@@ -3,10 +3,10 @@ class CreateBasicInfos < ActiveRecord::Migration[5.1]
     create_table :basic_infos do |t|
       t.integer :resume_id
       t.integer :user_id
+      t.string :user_avatar
       t.string :full_name
       t.string :headline
       t.string :description
-      t.string :avatar
       t.string :location
       t.string :website
       t.integer :salary

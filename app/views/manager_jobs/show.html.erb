@@ -8,7 +8,7 @@
         <h1><%= @job.title %></h1>
         <h3><a href="#"><%= @job.company_name %></a></h3>
       </div>
-      <time datetime="2016-03-03 20:00"><%= time_ago_in_words @job.created_at %></time>
+      <time datetime="2016-03-03 20:00"><%= time_ago_in_words @job.created_at %> Ago </time>
       <hr>
       <p class="lead"><%= @job.description %></p>
 
@@ -25,17 +25,17 @@
 
         <li>
           <i class="fa fa-money"></i>
-          <span><%= @job.salary %></span>
+          <span><%= @job.salary %>/ hour </span>
         </li>
 
         <li>
           <i class="fa fa-clock-o"></i>
-          <span><%= @job.working_hour %></span>
+          <span><%= @job.working_hour %>/ week</span>
         </li>
 
         <li>
           <i class="fa fa-flask"></i>
-          <span><%= @job.experience %></span>
+          <span><%= @job.experience %> + year experience </span>
         </li>
 
         <li>
@@ -61,6 +61,9 @@
 
 <section>
   <div class="container">
+    <div class = "text-center">
+      <h1>Resume have been Applied </h1>
+    </div>
     <% @job.resumes.each do |resume| %>
       <%= render "components/resumes/resume_item_type1", resume: resume %> 
     <% end %>

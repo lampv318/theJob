@@ -152,7 +152,7 @@
           <%= paginate @jobs %>
         </div>
         <% @jobs.each do |job| %>
-          <%= render "job", job: job %>
+          <%= render "components/job/job_item_type1", job: job %>
         <% end %>
         <div class= "text-center">
           <%= paginate @jobs %>

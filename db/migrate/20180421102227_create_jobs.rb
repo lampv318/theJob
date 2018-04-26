@@ -3,6 +3,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
     create_table :jobs do |t|
       t.integer :user_id
       t.string :company_name
+      t.string :company_avatar
       t.string :title
       t.string :description
       t.string :url
@@ -10,7 +11,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.string :employment_type
       t.string :salary
       t.integer :working_hour
-      t.float :experience
+      t.integer :experience
       t.string :education_level
       t.string :status, default: "Pending approval"
 

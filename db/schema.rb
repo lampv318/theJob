@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(version: 20180423093534) do
   create_table "basic_infos", force: :cascade do |t|
     t.integer "resume_id"
     t.integer "user_id"
+    t.string "user_avatar"
     t.string "full_name"
     t.string "headline"
     t.string "description"
-    t.string "avatar"
     t.string "location"
     t.string "website"
     t.integer "salary"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20180423093534) do
   create_table "jobs", force: :cascade do |t|
     t.integer "user_id"
     t.string "company_name"
+    t.string "company_avatar"
     t.string "title"
     t.string "description"
     t.string "url"
@@ -89,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180423093534) do
     t.string "employment_type"
     t.string "salary"
     t.integer "working_hour"
-    t.float "experience"
+    t.integer "experience"
     t.string "education_level"
     t.string "status", default: "Pending approval"
     t.datetime "created_at", null: false
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 20180423093534) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "account_name"
+    t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

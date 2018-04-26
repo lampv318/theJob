@@ -1,324 +1,28 @@
 <%= form_for @resume , url: user_resumes_path do |f| %>
-<!-- Page header -->
-<header class="page-header">
-  <div class="container page-name">
-    <h1 class="text-center">Add your resume</h1>
-    <p class="lead text-center">Create your resume and put it online.</p>
-  </div>
+    <%= render "shared/error_messages", object: f.object %>
 
-  <div class="container">
     <%= f.fields_for :basic_infos do |basic_info| %>
-
-    <%= basic_info.hidden_field :user_id, value: current_user.id %>
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="form-group">
-          <input type="file" class="dropify" data-default-file="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg">
-          <span class="help-block">Please choose a 4:6 profile picture.</span>
-        </div>
-      </div>
-
-      <div class="col-xs-12 col-sm-8">
-        <div class="form-group">
-          <%= basic_info.text_field :full_name, class: "form-control input-lg", placeholder: "Name" %>
-        </div>
-        
-        <div class="form-group">
-          <%= basic_info.text_field :headline, class: "form-control", placeholder: "Headline (e.g. Front-end developer)" %>
-        </div>
-
-        <div class="form-group">
-          <%= basic_info.text_area :description, class: "form-control", rows: "3", cols: "76", placeholder: "Short description about you" %>
-        </div>
-
-        <hr class="hr-lg">
-
-        <h6>Basic information</h6>
-        <div class="row">
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-              <%= basic_info.text_field :location, class: "form-control", placeholder: "Location, e.g. Melon Park, CA" %>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-globe"></i></span>
-              <%= basic_info.text_field :website, class: "form-control", placeholder: "Website address" %>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-usd"></i></span>
-              <%= basic_info.text_field :salary, class: "form-control", placeholder: "Salary, e.g. 85"%>
-              <span class="input-group-addon">Per hour</span>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-birthday-cake"></i></span>
-              <%= basic_info.text_field :age, class: "form-control", placeholder: "Age" %>
-              <span class="input-group-addon">Years old</span>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-              <%= basic_info.text_field :phone, class: "form-control", placeholder: "Phone number" %>
-            </div>
-          </div>
-
-          <div class="form-group col-xs-12 col-sm-6">
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-              <%= basic_info.text_field :email_address, class: "form-control", placeholder: "Email address" %>
-            </div>
-          </div>
-
-        </div>
-
-        <hr class="hr-lg">
-        <%= f.fields_for :tag_lists do |tag_list| %>
-        <%= tag_list.hidden_field :user_id, value: current_user.id %>
-        <h6>Tags list</h6>
-        <div class="form-group">
-          <div class= "bootstrap-tagsinput">
-            <%= tag_list.text_field :tag_name, placeholder: "Tag name" %>
-          </div>
-             <%= link_to_add_association "Add tag name" , f, :tag_lists %>
-          <!-- <input type="text" value="HTML,CSS,Javascript" data-role="tagsinput" placeholder="Tag name"> -->
-          <!-- <span class="help-block">Write tag name and press enter</span> -->
-        </div>
-        <% end %>
-      </div>
-    </div>
+      <%= render "components/resume/basic_info", basic_info: basic_info, f: f %>
     <% end %>
-    <div class="button-group">
-      <div class="action-buttons">
 
-        <div class="upload-button">
-          <button class="btn btn-block btn-gray">Choose a resume file</button>
-          <input type="file">
-        </div>
 
-        <div class="upload-button">
-          <button class="btn btn-block btn-primary">Choose a cover image</button>
-          <input id="cover_img_file" type="file">
-        </div>
-
-      </div>
-    </div>
-  </div>
-</header>
-<!-- END Page header -->
-<%= render "shared/error_messages", object: f.object %>
-<!-- Social media -->
-<section>
-  <div class="container">
-    <header class="section-header">
-      <span>Get connected</span>
-      <h2>Social media</h2>
-    </header>
     <%= f.fields_for :socials do |social| %>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-            <%= social.text_field :facebook_link ,class: "form-control", placeholder: "Profile URL" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-google-plus"></i></span>
-            <%= social.text_field :google_link ,class: "form-control", placeholder: "Profile URL" %>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-twitter"></i></span>
-            <%= social.text_field :twitter_link ,class: "form-control", placeholder: "Profile URL" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-github"></i></span>
-            <%= social.text_field :github_link ,class: "form-control", placeholder: "Profile URL" %>
-          </div>
-        </div>
-      </div>
-    </div>
+      <%= render "components/resume/social_media", social: social %>
     <% end %>
-  </div>
-</section>
-  <!-- Social media -->
 
-<!-- Education -->
-<section class=" bg-alt">
-  <div class="container">
-    <header class="section-header">
-      <span>Latest degrees</span>
-      <h2>Education</h2>
-    </header>
     <%= f.fields_for :educations do |education| %>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="item-block">
-          <div class="item-form">
-            <button class="btn btn-danger btn-float btn-remove"><i class="ti-close"></i></button>
-            <div class="row">
-              <div class="col-xs-12 col-sm-4">
-                <div class="form-group">
-                  <input type="file" class="dropify" data-default-file="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg">
-                  <span class="help-block">Please choose a square logo</span>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-8">
-                <div class="form-group">
-                  <%= education.text_field :degree, class: "form-control", placeholder: "Degree, e.g. Bachelor" %>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Major, e.g. Computer Science">
-                </div>
-                <div class="form-group">
-                  <%= education.text_field :school_name, class: "form-control",
-                   placeholder:"School name, e.g. Massachusetts Institute of Technology" %>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon">Date from</span>
-                    <%= education.date_field :date_from , class: "form-control", placeholder: "e.g. 2012" %>
-                    <span class="input-group-addon">Date to</span>
-                    <%= education.date_field :date_to , class: "form-control", placeholder: "e.g. 2016" %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <%= education.text_area :description, placeholder: "Short description",  cols: "76" ,rows: "3" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xs-12 text-center">
-        <br>
-        <%= link_to_add_association "Add Education" , f, :educations , class: "btn btn-primary" %>
-      </div>
-    </div>
+      <%= render "components/resume/education", education: education, f: f %>
     <% end %>
-  </div>
-</section>
-<!-- END Education -->
 
-<!-- Work Experience -->
-<section>
-  <div class="container">
-    <header class="section-header">
-      <span>Past positions</span>
-      <h2>Work Experience</h2>
-    </header>
     <%= f.fields_for :work_experiences do |work_experience| %> 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="item-block">
-          <div class="item-form">
-            <button class="btn btn-danger btn-float btn-remove"><i class="ti-close"></i></button>
-            <div class="row">
-              <div class="col-xs-12 col-sm-4">
-                <div class="form-group">
-                  <input type="file" class="dropify" data-default-file="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg">
-                  <span class="help-block">Please choose a square logo</span>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-8">
-                <div class="form-group">
-                  <%= work_experience.text_field :company , 
-                  class: "form-control", placeholder: "Company name" %>
-                </div>
-                <div class="form-group">
-                  <%= work_experience.text_field :position, 
-                    class:"form-control", placeholder: "Position, e.g. UI/UX Researcher" %>
-                </div>
-                <div class="form-group">
-                  <div class="input-group">
-                    <span class="input-group-addon">Date from</span>
-                    <%= work_experience.date_field :date_from, class: "form-control", placeholder: "e.g. 2012"  %>
-                    <span class="input-group-addon">Date to</span>
-                    <%= work_experience.date_field :date_to, class: "form-control", placeholder: "e.g. 2016"  %>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12">
-                <div class="form-group">
-                  <%= work_experience.cktext_area :description %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-xs-12 text-center">
-        <br>
-        <%= link_to_add_association "Add Experience" , f, :work_experiences , class: "btn btn-primary" %>
-      </div>
-    </div>
+      <%= render "components/resume/work_experience", work_experience: work_experience,
+        f: f %>
     <% end %>
-  </div>
-</section>
-<!-- END Work Experience -->
-
-<!-- Skills -->
-<section class=" bg-alt">
-  <div class="container">
-    <header class="section-header">
-      <span>Expertise Areas</span>
-      <h2>Skills</h2>
-    </header>
 
     <%= f.fields_for :skills do |skill| %>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="item-block">
-          <div class="item-form">
-            <button class="btn btn-danger btn-float btn-remove"><i class="ti-close"></i></button>
-            <div class="row">
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <%= skill.text_field :name , class: "form-control",  placeholder:"Skill name, e.g. HTML"%>
-                </div>
-              </div>
-              <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                  <div class="input-group">
-                    <%= skill.number_field :proficiency, class: "form-control", placeholder: "Skill proficiency, e.g. 90"  %>
-                    <span class="input-group-addon">%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 text-center">
-      <br>
-      <%= link_to_add_association "Add Skill" , f, :skills , class: "btn btn-primary" %>
-      </div>
-    </div>
+      <%= render "components/resume/skill", skill: skill, f: f %>
     <% end %>
-  </div>
-</section>
-<!-- END Skills -->
 
-<!-- Submit -->
 <section class=" bg-img" style="background-image: url(https://raw.githubusercontent.com/lampv318/image/master/bg-facts.jpg);">
   <div class="container">
     <header class="section-header">
@@ -329,6 +33,5 @@
     <p class="text-center"> <%= f.submit class: "btn btn-success btn-xl btn-round" %></p>
   </div>
 </section>
-  <!-- END Submit -->
 <% end %>
 

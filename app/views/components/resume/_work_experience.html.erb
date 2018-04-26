@@ -1,0 +1,53 @@
+<section>
+  <div class="container">
+    <header class="section-header">
+      <span>Past positions</span>
+      <h2>Work Experience</h2>
+    </header>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="item-block">
+          <div class="item-form">
+            <div class="row">
+              <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                  <input type="file" class="dropify" data-default-file="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg">
+                  <span class="help-block">Please choose a square logo</span>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                <div class="form-group">
+                  <%= work_experience.text_field :company , 
+                  class: "form-control", placeholder: "Company name" %>
+                </div>
+                <div class="form-group">
+                  <%= work_experience.text_field :position, 
+                    class:"form-control", placeholder: "Position, e.g. UI/UX Researcher" %>
+                </div>
+                <div class="form-group">
+                  <div class="input-group">
+                    <span class="input-group-addon">Date from</span>
+                    <%= work_experience.date_field :date_from, class: "form-control", placeholder: "e.g. 2012"  %>
+                    <span class="input-group-addon">Date to</span>
+                    <%= work_experience.date_field :date_to, class: "form-control", placeholder: "e.g. 2016"  %>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= work_experience.cktext_area :description %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <br>
+        <%= link_to_add_association "Add Experience" , f, :work_experiences ,
+          partial: "components/resume/work_experience_fields", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</section>

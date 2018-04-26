@@ -1,0 +1,37 @@
+<section class=" bg-alt">
+  <div class="container">
+    <header class="section-header">
+      <span>Expertise Areas</span>
+      <h2>Skills</h2>
+    </header>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="item-block">
+          <div class="item-form">
+            <button class="btn btn-danger btn-float btn-remove"><i class="ti-close"></i></button>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <%= skill.text_field :name , class: "form-control",  placeholder:"Skill name, e.g. HTML"%>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                  <div class="input-group">
+                    <%= skill.number_field :proficiency, class: "form-control", placeholder: "Skill proficiency, e.g. 90"  %>
+                    <span class="input-group-addon">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 text-center">
+      <br>
+      <%= link_to_add_association "Add Skill" , f, :skills , class: "btn btn-primary",
+        partial: "components/resume/skill_fields" %>
+      </div>
+    </div>
+  </div>
+</section>

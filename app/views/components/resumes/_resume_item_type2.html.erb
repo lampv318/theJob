@@ -1,8 +1,12 @@
 <div class="col-xs-12">
   <div class="item-block">
     <header>
-      <a href="<%= resume_path(resume.id) %>"><img class="resume-avatar" 
-        src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+      <a href="<%= resume_path(resume.id) %>">
+        <% if resume.basic_infos.first.user_avatar? %>
+          <img class="resume-avatar" src="<%= resume.basic_infos.first.user_avatar %>" alt="">
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+        <% end %>
       </a>
       <div class="hgroup">
         <h4><a href="<%= resume_path(resume.id) %>"><%= resume.basic_infos.first.full_name %></a></h4>

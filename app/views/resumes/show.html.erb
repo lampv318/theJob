@@ -3,7 +3,11 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <img src="assets/img/avatar.jpg" alt="">
+        <% if @resume.basic_infos.first.avatar? %>
+          <img class="resume-avatar" src="<%= @resume.basic_infos.first.avatar %>" alt="">
+        <% else %>
+          <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+        <% end %>
       </div>
 
       <div class="col-xs-12 col-sm-8 header-detail">

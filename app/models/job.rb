@@ -1,4 +1,7 @@
+require "elasticsearch/model"
 class Job < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   ATTRIBUTES_PARAMS = %i(user_id  company_name title description url location 
   employment_type salary working_hour experience education_level).freeze
@@ -18,3 +21,8 @@ class Job < ApplicationRecord
   EMPLOYMENT_TYPES = ["Full time", "Part time", "Internship", "Freeelance", "Remote" ].freeze
   EDUCATION_LEVELS = ["Postdoc", "Ph.D", "Master", "Bachelor"].freeze
 end
+Job.__elasticsearch__.client.indices.delete index: Job.index_name rescue nil
+Job.__elasticsearch__.client.indices.create \
+  index: Job.index_name,
+  body: { settings: Job.settings.to_hash, mappings: Job.mappings.to_hash }
+Job.import

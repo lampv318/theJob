@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   get "/blog-post", to: "pages#blog-post"
   get "/pricing", to: "pages#pricing"
   get "/manager-resumes", to: "manager_resumes#index"
+  get "search", to: "search#search"
+  post "search", to: "search#search"
 end

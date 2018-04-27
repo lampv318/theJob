@@ -1,0 +1,30 @@
+<header class="page-header bg-img size-lg" style="background-image: url(assets/img/bg-banner1.jpg)">
+  <div class="container no-shadow">
+    <h1 class="text-center">Search resul</h1>
+    <p class="lead text-center">Here's the list of your searched jobs. You can apply now </p>
+  </div>
+</header>
+
+<main>
+  <section class="no-padding-top bg-alt">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <br>
+          <h5>We found <strong><%= @jobs.count %></strong> matches </h5>
+        </div>
+        <% if @jobs.count != 0 %>
+          <div class= "text-center">
+            <%= paginate @jobs %>
+          </div>
+          <% @jobs.each do |job| %>
+            <%= render "components/job/job_item_type1", job: job %>
+          <% end %>
+          <div class= "text-center">
+            <%= paginate @jobs %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</main>

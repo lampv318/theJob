@@ -54,10 +54,9 @@ class JobsController < ApplicationController
       flash[:danger] = "You have applied , Please come back later"
       redirect_to root_path
     else
-      if @resume.apply @job
+      return if !@resume.apply @job
         flash[:success] = "Congratulation! You have applied job successfully !"
         redirect_to root_path
-      end
     end
   end
 
@@ -72,10 +71,9 @@ class JobsController < ApplicationController
 
   def find_job
     @job = Job.find_by id: params[:id]
-    if @job.nil?
+    return if @job
       flash[:danger] = "Can't find Job"
       redirect_to root_url
-    end
   end
   
 end

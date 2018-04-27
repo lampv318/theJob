@@ -1,0 +1,28 @@
+<section class="bg-alt">
+  <div class="container">
+    <header class="section-header">
+      <span>Past positions</span>
+      <h2>Work Experience</h2>
+    </header>
+    <div class="row">
+    <% @resume.work_experiences.each do |work_experience| %>
+      <div class="col-xs-12">
+        <div class="item-block">
+          <header>
+            <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+            <div class="hgroup">
+              <h4><%= work_experience.company %></h4>
+              <h5><%= work_experience.position %></h5>
+            </div>
+            <h6 class="time"><%= work_experience.date_from %>- <% work_experience.date_to %></h6>
+          </header>
+          <div class="item-body">
+            <p>Responsibilities:</p>
+            <%= raw work_experience.description %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>

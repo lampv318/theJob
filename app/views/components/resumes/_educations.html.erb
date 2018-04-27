@@ -1,0 +1,27 @@
+<section>
+  <div class="container">
+    <header class="section-header">
+      <span>Latest degrees</span>
+      <h2>Education</h2>
+    </header>
+    <div class="row">
+    <% @resume.educations.each do |education| %>
+      <div class="col-xs-12">
+        <div class="item-block">
+          <header>
+            <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+            <div class="hgroup">
+              <h4><%= education.degree %><small><%= education.major %></small></h4>
+              <h5><%= education.school_name%></h5>
+            </div>
+            <h6 class="time"><%= education.date_from %>- <% education.date_to %></h6>
+          </header>
+          <div class="item-body">
+            <p><%= education.description %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<section>
+  <div class="container">
+    <header class="section-header">
+      <span>Expertise Areas</span>
+      <h2>Skills</h2>
+    </header>
+    
+    <br>
+    <ul class="skills cols-3">
+      <% @resume.skills.each do |skill| %>
+        <li>
+          <div>
+            <span class="skill-name"><%= skill.name%></span>
+            <span class="skill-value"><%= skill.proficiency %>%</span>
+          </div>
+          <div class="progress">
+            <div class="progress-bar" style="width: <%= skill.proficiency %>%;"></div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</section>

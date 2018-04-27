@@ -25,6 +25,8 @@ gem "cloudinary"
 gem "ckeditor"
 gem "mini_magick", "4.7.0"
 gem "kaminari"
+gem "elasticsearch-model"
+gem "elasticsearch-rails"
 
 group :development, :test do
   gem "sqlite3", "1.3.13"

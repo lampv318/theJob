@@ -65,10 +65,9 @@ class ResumesController < ApplicationController
 
     def find_resume
     @resume = Resume.find_by id: params[:id]
-    if @resume.nil?
+    return if @resume
       flash[:danger] = "Can't find Resume"
       redirect_to root_url
-    end
   end
 
 end

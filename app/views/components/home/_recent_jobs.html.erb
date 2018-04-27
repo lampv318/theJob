@@ -1,0 +1,15 @@
+ <section>
+  <div class="container">
+    <header class="section-header">
+      <span>Latest</span>
+      <h2>Recent jobs</h2>
+    </header>
+    <div class="row item-blocks-connected">
+      <% @jobs.limit(5).each do |job| %>
+        <%= render "components/job/job_item", job: job %>
+      <% end %>
+    </div>
+    <br><br>
+    <p class="text-center"><a class="btn btn-info" href="<%= jobs_path %>">Browse all jobs</a></p>
+  </div>
+</section>

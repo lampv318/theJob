@@ -13,9 +13,8 @@ class ManagerJobsController < ApplicationController
 
   def find_job
     @job = Job.find_by id: params[:id]
-    if @job.nil?
+    return if @job
       flash[:danger] = "Can't find Job"
       redirect_to root_url
-    end
   end
 end

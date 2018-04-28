@@ -32,5 +32,4 @@ Rails.application.routes.draw do
   get "/pricing", to: "pages#pricing"
   get "/manager-resumes", to: "manager_resumes#index"
   get "search", to: "search#search"
-  post "search", to: "search#search"
 end

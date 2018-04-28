@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_action :set_search
+
   def home
     @jobs = Job.all.by_default
   end
@@ -16,5 +18,9 @@ class PagesController < ApplicationController
   end
 
   def pricing
+  end
+
+  def set_search
+    @q = Job.search params[:q]
   end
 end

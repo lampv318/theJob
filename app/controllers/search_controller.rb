@@ -1,9 +1,12 @@
 class SearchController < ApplicationController
+  before_action :set_search
+
   def search
-    if params[:q].nil?
-      @jobs = []
-    else
-      @jobs = Job.search params[:q]
-    end
+    @jobs = @q.result(distin: true).page params[:page]
+    render "jobs/index"
+  end
+
+  def set_search
+    @q= Job.ransack params[:q]
   end
 end

@@ -1,30 +1,25 @@
 <nav class="navbar">
   <div class="container">
-
     <!-- Logo -->
     <div class="pull-left">
       <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
-
       <div class="logo-wrapper">
         <a class="logo" href="/"><img src="https://raw.githubusercontent.com/lampv318/image/master/logo.png" alt="logo"></a>
         <a class="logo-alt" href="/"><img src="https://raw.githubusercontent.com/lampv318/image/master/logo.png" alt="logo-alt"></a>
       </div>
-
     </div>
     <!-- END Logo -->
-
     <!-- User account -->
     <% if user_signed_in? %>
       <div class="pull-right">
         <div class="dropdown user-account">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <% if !current_user.basic_infos.nil? %>
-             <img src="https://raw.githubusercontent.com/lampv318/image/master/avatar-1.jpg" alt="avatar">
+            <% if current_user.basic_infos.first.user_avatar %>
+              <img src="<%= current_user.basic_infos.first.user_avatar %>" alt="avatar">
             <% else %>
-              <img src="<%= current_user.basic_infos.first.avatar %>" alt="avatar">
+              <img src="https://raw.githubusercontent.com/lampv318/image/master/avatar-1.jpg" alt="avatar">
             <% end %>
           </a>
-
           <ul class="dropdown-menu dropdown-menu-right">
             <li><%= link_to "Logout" , logout_path , method: "delete" %></li>
           </ul>

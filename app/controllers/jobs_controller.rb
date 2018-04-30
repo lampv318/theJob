@@ -26,7 +26,7 @@ class JobsController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Some thing went wrong !"
-      redirect_to new_user_job_path(current_user)
+      render :new
     end
   end
 

@@ -12,7 +12,6 @@ class User < ApplicationRecord
   has_many :company_users, dependent: :destroy
   has_many :companies, through: :company_users
   has_many :jobs, dependent: :destroy
-  has_many :tag_lists, dependent: :destroy
 
   validates :email, presence: true, length: {maximum: 255}, 
     format: {with: VALID_EMAIL_REGEX}

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :resumes, only: [:index, :show]
   resources :manager_jobs, only: [:index, :show]
+  resources :tags, only: [:index, :show]
 
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"

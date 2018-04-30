@@ -42,8 +42,8 @@
           </li>
         </ul>
         <div class="tag-list">
-          <% @resume.tag_lists.each do |tag_list| %>
-            <span><%= tag_list.tag_name %></span> 
+          <% @resume.tag_list.each do |tag| %>
+            <span>#<%= link_to tag , tag_path(tag) %></span> 
           <% end %>
         </div>
       </div>
@@ -57,7 +57,6 @@
         <li><a class="instagram" href="<%= @resume.socials.first.github_link %>"><i class="fa fa-github"></i></a></li>
       </ul>
       <div class="action-buttons">
-        <a class="btn btn-gray" href="#">Download CV</a>
         <a class="btn btn-success" data-toggle="modal" data-target="#modal-contact" href="#">Contact me</a>
       </div>
     </div>

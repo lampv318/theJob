@@ -15,7 +15,8 @@ User.create email: "admin@admin.com", account_name: "admin", password: "12345678
 end
 
 20.times do |n|
-  Resume.create user_id: "#{n}"
+  Resume.create user_id: "#{n}",tag_list: "#{Faker::Job.key_skill}, #{Faker::Job.key_skill},
+    #{Faker::Job.key_skill},#{Faker::Job.key_skill}, #{Faker::Job.key_skill}"
 end
 
 20.times do |n|
@@ -86,12 +87,6 @@ end
   Social.create facebook_link: "https://twitter.com/"+Faker::Name.first_name, resume_id: "#{n}"
   Social.create facebook_link: "https://github.com/"+Faker::Name.first_name, resume_id: "#{n}"
   Social.create facebook_link: "https://google.com/"+Faker::Name.first_name, resume_id: "#{n}"
-end
-
-20.times do |n|
-  TagList.create tag_name: Faker::Job.key_skill, user_id: "#{n}", resume_id: "#{n}"
-  TagList.create tag_name: Faker::Job.key_skill, user_id: "#{n}", resume_id: "#{n}"
-  TagList.create tag_name: Faker::Job.key_skill, user_id: "#{n}", resume_id: "#{n}"
 end
 
 20.times do |n| 

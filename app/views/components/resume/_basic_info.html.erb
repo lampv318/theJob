@@ -65,17 +65,13 @@
         </div>
       </div>
       <hr class="hr-lg">
-      <%= f.fields_for :tag_lists do |tag_list| %>
-        <%= tag_list.hidden_field :user_id, value: current_user.id %>
-        <h6>Tags list</h6>
-        <div class="form-group">
-          <div class= "bootstrap-tagsinput">
-            <%= tag_list.text_field :tag_name, placeholder: "Tag name" %>
-          </div>
-             <%= link_to_add_association "Add tag name" , f, :tag_lists,
-              partial: "components/resume/tag_list_fields" %>
+      <h6>Tags list</h6>
+      <div class="form-group">
+        <div class= "bootstrap-tagsinput">
+          <%= f.text_field :tag_list, placeholder: "Tag name" %>
+          <span class="help-block">Tags (separated by commas)</span>
         </div>
-      <% end %>
+      </div>
     </div>
     </div>
     <div class="button-group">

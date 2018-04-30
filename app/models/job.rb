@@ -4,6 +4,8 @@ class Job < ApplicationRecord
   employment_type salary working_hour experience education_level).freeze
 
   scope :by_default, lambda { order created_at: :desc }
+  scope :salary_gt, ->(amount) { where('salary > ?', amount)  }
+  scope :salary_lt, ->(amount) { where('salary < ?', amount)  }
 
   has_many :resume_jobs
   has_many :resumes, through: :resume_jobs
@@ -15,6 +17,6 @@ class Job < ApplicationRecord
 
   accepts_nested_attributes_for :job_details, allow_destroy: true
 
-  EMPLOYMENT_TYPES = ["Full time", "Part time", "Internship", "Freeelance", "Remote" ].freeze
+  EMPLOYMENT_TYPES = ["Full time", "Part time", "Internship", "Freelance", "Remote" ].freeze
   EDUCATION_LEVELS = ["Postdoc", "Ph.D", "Master", "Bachelor"].freeze
 end

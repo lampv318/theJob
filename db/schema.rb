@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180423093534) do
     t.string "url"
     t.string "location"
     t.string "employment_type"
-    t.string "salary"
+    t.integer "salary"
     t.integer "working_hour"
     t.integer "experience"
     t.string "education_level"

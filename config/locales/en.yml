@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+  faker:
+    job:
+      employment_type: ["Full time", "Part time", "Internship", "Freelance", "Remote"]
+      education_level: ["Postdoc", "Ph.D", "Master", "Bachelor"]

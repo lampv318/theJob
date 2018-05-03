@@ -1,5 +1,6 @@
 <div class="col-xs-12 item-block">
   <a href="<%= resume_path(resume.id) %>">
+    <% if resume.basic_infos.first %>
     <header>
       <% if resume.basic_infos.first.user_avatar? %>
         <img class="resume-avatar" src="<%= resume.basic_infos.first.user_avatar %>" alt="">
@@ -33,11 +34,13 @@
           <i class="fa fa-money"></i>
           <span><%= resume.basic_infos.first.salary %>/ hour</span>
         </li>
-
+      <% end %>
+      <% if resume.educations.first %>
         <li>
           <i class="fa fa-certificate"></i>
           <span><%= resume.educations.first.degree %></span>
         </li>
+      <% end %>
       </ul>
     </footer>
 </div>

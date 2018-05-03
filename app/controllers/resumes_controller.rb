@@ -7,6 +7,7 @@ class ResumesController < ApplicationController
   end
 
   def show
+    @message = @resume.user.messages.new
   end
 
   def new
@@ -22,7 +23,7 @@ class ResumesController < ApplicationController
     @resume = current_user.resumes.new resume_params
     if resume.save
       flash[:success] = "Resume has been created !"
-      redirect_to root_path
+      redirect_to resumes_path
     else
       flash[:danger] = "Some thing went wrong !"
       render :new
@@ -35,7 +36,7 @@ class ResumesController < ApplicationController
   def update
     if @resume.update_attributes resume_params
       flash[:success] = "Update success"
-      redirect_to root_path
+      redirect_to resumes_path
     else
       render :edit
     end
@@ -44,7 +45,7 @@ class ResumesController < ApplicationController
   def destroy
     if @resume.delete
       flash[:sucess] = "Delete completed"
-      redirect_to root_path
+      redirect_to resumes_path
     end
   end
 

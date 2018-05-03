@@ -7,22 +7,22 @@ class SessionsController < Devise::SessionsController
     # if user && user.valid_password?(sign_in_params[:password])
     if user
       sign_in user
-      # flash[:success] = "Sign in Success"
-      redirect_to root_path
+      flash[:success] = "Sign in Success"
+      redirect_to jobs_path
     else
-      # flash[:danger] = "User or password incorrect"
-      redirect_to root_path
+      flash[:danger] = "User or password incorrect"
+      redirect_to jobs_path
     end
   end
 
   def destroy
     if user_signed_in?
       sign_out current_user
-      redirect_to root_path
-      # flash[:success] = "Sign out !"
+      flash[:success] = "Sign out !"
+      redirect_to login_path
     else
+      flash[:danger] = "Not log in !"
       redirect_to root_path
-      # flash[:danger] = "Not log in !"
     end
   end
 

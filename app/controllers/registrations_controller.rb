@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if @user.save
       sign_in user
-      redirect_to root_path
+      redirect_to jobs_path
     else
       render :new
     end

@@ -1,9 +1,12 @@
-<!-- Page header -->
 <header class="page-header bg-img size-lg" style="background-image: 
   url(https://raw.githubusercontent.com/lampv318/image/master/bg-facts.jpg)">
   <div class="container">
     <div class="header-detail">
-      <img class="logo" src="assets/img/logo-google.jpg" alt="">
+      <% if @job.company_avatar? %>
+        <img class="logo" src="<%= @job.company_avatar %>" alt="">
+      <% else %>
+        <img class="logo" src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+      <% end %>
       <div class="hgroup">
         <h1><%= @job.title %></h1>
         <h3><a href="#"><%= @job.company_name %></a></h3>
@@ -61,17 +64,13 @@
     </div>
   </div>
 </header>
-<!-- END Page header -->
-<!-- Main container -->
+
 <main>
-  <!-- Job detail -->
   <section>
     <div class="container">
       <% if @job.job_details.first %>
-        <%= raw @job.job_details.first.content %>
+        <%= raw  @job.job_details.first.content %>
       <% end %>
     </div>
   </section>
-  <!-- END Job detail -->
 </main>
-<!-- END Main container -->

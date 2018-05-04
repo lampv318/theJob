@@ -2,8 +2,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <% if @resume.basic_infos.first.avatar? %>
-          <img class="resume-avatar" src="<%= @resume.basic_infos.first.avatar %>" alt="">
+        <% if @resume.basic_infos.first.user_avatar? %>
+          <img class="resume-avatar" src="<%= @resume.basic_infos.first.user_avatar %>" alt="">
         <% else %>
           <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
         <% end %>
@@ -43,7 +43,7 @@
         </ul>
         <div class="tag-list">
           <% @resume.tag_list.each do |tag| %>
-            <span>#<%= link_to tag , tag_path(tag) %></span> 
+            <span><%= link_to tag , tag_path(tag) %></span> 
           <% end %>
         </div>
       </div>

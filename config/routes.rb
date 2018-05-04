@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :resumes, only: [:index, :show]
   resources :manager_jobs, only: [:index, :show]
   resources :tags, only: [:index, :show]
+  resources :user_contacts, only: [:create]
 
   get "/contact", to: "pages#contact"
   get "/about", to: "pages#about"
@@ -33,4 +34,5 @@ Rails.application.routes.draw do
   get "/pricing", to: "pages#pricing"
   get "/manager-resumes", to: "manager_resumes#index"
   get "search", to: "search#search"
+
 end

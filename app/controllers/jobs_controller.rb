@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :check_logged_in, only: %i(new create)
+  before_action :check_logged_in, only: %i(new create apply)
   before_action :find_job, except: %i(new index create)
   before_action :set_search
 
@@ -23,7 +23,7 @@ class JobsController < ApplicationController
     @job = current_user.jobs.new job_params
     if job.save
       flash[:success] = "Job has been created !"
-      redirect_to root_path
+      redirect_to jobs_path
     else
       flash[:danger] = "Some thing went wrong !"
       render :new
@@ -36,7 +36,7 @@ class JobsController < ApplicationController
   def update
     if @job.update_attributes job_params
       flash[:success] = "Update success"
-      redirect_to root_path
+      redirect_to jobs_path
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class JobsController < ApplicationController
   def destroy
     if @job.delete
       flash[:sucess] = "Delete completed"
-      redirect_to root_path
+      redirect_to jobs_path
     end
   end
 
@@ -57,11 +57,12 @@ class JobsController < ApplicationController
     @resume = Resume.find_by id: params[:resume_id]
     if @job.resumes.find_by id: params[:resume_id]
       flash[:danger] = "You have applied , Please come back later"
-      redirect_to root_path
+      redirect_to jobs_path
     else
       return if !@resume.apply @job
+        UserMailer.apply_job(current_user).deliver_now
         flash[:success] = "Congratulation! You have applied job successfully !"
-        redirect_to root_path
+        redirect_to jobs_path
     end
   end
 

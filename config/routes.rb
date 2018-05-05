@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:index, :show] do
     member do
-      get :apply
+      get :apply, to: "jobs#apply"
       post :apply, to: "jobs#create_apply"
     end
   end
@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   get "/pricing", to: "pages#pricing"
   get "/manager-resumes", to: "manager_resumes#index"
   get "search", to: "search#search"
+  get "search-resume", to: "search_resume#search"
 
 end

@@ -4,7 +4,6 @@ class SessionsController < Devise::SessionsController
 
   def create
     user = User.find_by email: sign_in_params[:email]
-    # if user && user.valid_password?(sign_in_params[:password])
     if user
       sign_in user
       flash[:success] = "Sign in Success"

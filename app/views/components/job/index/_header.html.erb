@@ -1,0 +1,65 @@
+<header class="page-header bg-img" style="background-image: url(assets/img/bg-banner1.jpg);">
+  <div class="container page-name">
+    <h1 class="text-center">Browse jobs</h1>
+    <p class="lead text-center">Use following search box to find jobs that fits you better</p>
+  </div>
+  <div class="container">
+    <%= search_form_for @q, url: search_path do |f| %>
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-4">
+          <%= f.text_field :title_or_company_name_or_employment_type_cont_any,
+            class: "form-control", placeholder: "Job title, employment, or company" %>
+        </div>
+        <div class="form-group col-xs-12 col-sm-4">
+          <%= f.text_field :location_cont_any, class: "form-control", placeholder: "City, state or zip" %>
+        </div>
+        <div class="form-group col-xs-12 col-sm-4">
+          <input type="text" class="form-control" placeholder="Categories ..">
+        </div>
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Contract</h6>
+          <% (Job::EMPLOYMENT_TYPES).each do |e|%>
+            <%= check_box_tag "q[employment_type_eq_any][]", e %>
+            <%= e %>(<small><%= Job.where(employment_type: e).count %></small>)
+            <br>
+          <% end %>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Academic degree</h6>
+            <% (Job::EDUCATION_LEVELS).each do |e|%>
+            <%= check_box_tag "q[education_level_eq_any][]", e %>
+            <%= e %>(<small><%= Job.where(education_level: e).count %></small>)
+            <br>
+          <% end %>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Hourly rate</h6>
+          <div class="radio">
+            <input type="radio" name="rate" id="rate1" value="option1" >
+            <label for="rate2">$0 - $50 </label>
+          </div>
+          <div class="radio">
+            <input type="radio" name="rate" id="rate2" value="option2">
+            <label for="rate3">$50 - $100 </label>
+          </div>
+          <div class="radio">
+            <input type="radio" name="rate" id="rate3" value="option3">
+            <label for="rate4">$100 - $200 </label>
+          </div>
+          <div class="radio">
+            <input type="radio" name="rate" id="rate4" value="option4">
+            <label for="rate5">$200+ </label>
+          </div>
+        </div>
+
+      </div>
+      <div class="button-group">
+        <div class="action-buttons">
+          <button class="btn btn-primary">Apply filter</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>

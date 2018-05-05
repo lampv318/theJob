@@ -1,6 +1,7 @@
 class ResumesController < ApplicationController
   before_action :check_logged_in, only: %i(new create)
   before_action :find_resume, except: %i(new index create)
+  before_action :set_search
 
   def index
     @resumes = Resume.by_default.page params[:page]
@@ -62,11 +63,15 @@ class ResumesController < ApplicationController
         website salary age phone email_address)
   end
 
-    def find_resume
-    @resume = Resume.find_by id: params[:id]
-    return if @resume
-      flash[:danger] = "Can't find Resume"
-      redirect_to root_url
+  def find_resume
+  @resume = Resume.find_by id: params[:id]
+  return if @resume
+    flash[:danger] = "Can't find Resume"
+    redirect_to root_url
+  end
+
+  def set_search
+    @q= Resume.ransack params[:q]
   end
 
 end

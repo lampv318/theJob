@@ -5,5 +5,7 @@ class BasicInfo < ApplicationRecord
   scope :salary_gt, ->(amount) { where('salary > ?', amount)  }
   scope :salary_lt, ->(amount) { where('salary < ?', amount)  }
 
-  mount_uploader  :avatar, AvatarUploader
+  validates :user_avatar, presence: :true
+
+  mount_uploader :user_avatar, AvatarUploader
 end

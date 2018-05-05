@@ -2,10 +2,10 @@
   <a href="<%= resume_path(resume.id) %>">
     <% if resume.basic_infos.first %>
     <header>
-      <% if resume.basic_infos.first.user_avatar? %>
-        <img class="resume-avatar" src="<%= resume.basic_infos.first.user_avatar %>" alt="">
+      <% if resume.basic_infos.first.link_avatar %>
+        <img class="resume-avatar" src="<%= resume.basic_infos.first.link_avatar %>" alt="">
       <% else %>
-        <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+        <img src="<%= resume.basic_infos.first.user_avatar %>" alt="">
       <% end %>
       <div class="hgroup">
         <h4><%= resume.basic_infos.first.full_name %></h4>

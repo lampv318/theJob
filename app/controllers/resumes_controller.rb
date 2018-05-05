@@ -59,7 +59,7 @@ class ResumesController < ApplicationController
       work_experiences_attributes: %i(company position date_from date_to description),
       educations_attributes: %i(degree major school_name description date_from date_to),
       socials_attributes: %i(facebook_link google_link twitter_link github_link),
-      basic_infos_attributes: %i(user_id full_name headline description avatar location 
+      basic_infos_attributes: %i(user_id full_name headline description user_avatar location 
         website salary age phone email_address)
   end
 

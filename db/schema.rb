@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180503083931) do
     t.integer "resume_id"
     t.integer "user_id"
     t.string "user_avatar"
+    t.string "link_avatar"
     t.string "full_name"
     t.string "headline"
     t.string "description"

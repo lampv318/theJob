@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
-        <% if @resume.basic_infos.first.user_avatar? %>
-          <img class="resume-avatar" src="<%= @resume.basic_infos.first.user_avatar %>" alt="">
+        <% if @resume.basic_infos.first.link_avatar %>
+          <img class="resume-avatar" src="<%= @resume.basic_infos.first.link_avatar %>" alt="">
         <% else %>
-          <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg" alt="">
+          <img src="<%= @resume.basic_infos.first.user_avatar %>" alt="">
         <% end %>
       </div>
       <div class="col-xs-12 col-sm-8 header-detail">

@@ -23,7 +23,7 @@ end
 end
 
 20.times do |n|
-  BasicInfo.create user_id: "#{n}" , resume_id: "#{n}", user_avatar: Faker::Avatar.image,
+  BasicInfo.create user_id: "#{n}" , resume_id: "#{n}", link_avatar: Faker::Avatar.image,
     full_name: Faker::Name.name, headline: Faker::Job.title ,
     description: Faker::Lorem.paragraph, location: Faker::Address.state,
     website: Faker::Internet.url, salary: Faker::Number.between(10, 210), 

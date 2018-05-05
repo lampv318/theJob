@@ -4,6 +4,7 @@ class CreateBasicInfos < ActiveRecord::Migration[5.1]
       t.integer :resume_id
       t.integer :user_id
       t.string :user_avatar
+      t.string :link_avatar
       t.string :full_name
       t.string :headline
       t.string :description

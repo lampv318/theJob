@@ -1,0 +1,90 @@
+<header class="page-header bg-img" style="background-image: url(assets/img/bg-banner1.jpg);">
+  <div class="container page-name">
+    <h1 class="text-center">Browse resumes</h1>
+    <p class="lead text-center">Use following search box to find resumes that fits your position better</p>
+  </div>
+  <div class="container">
+    <%= search_form_for @q, url: search_resume_path do |f| %>
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-4">
+          <%= f.search_field :basic_infos_full_name_or_basic_infos_headline_cont_any,
+           class: "form-control", placeholder: "Keyword: name, categories, headline "%>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+          <%= f.search_field :basic_infos_location_cont_any,
+            class: "form-control", placeholder: "Location: city, state or zip"%>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+           <%= f.search_field :tags_name_cont_any,
+            class: "form-control", placeholder: "Tagging"%>
+        </div>
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Contract</h6>
+          <% (Education::DEGREES).each do |e|%>
+            <%= check_box_tag "q[educations_degree_eq_any][]", e %>
+            <%= e %>(<small><%= Education.where(degree: e).count %></small>)
+            <br>
+          <% end %>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Hourly rate</h6>
+           <div class="checkbox">
+              <%= check_box_tag "q[basic_infos_salary_lteq_any][]", 50 %>
+              <label for="rate2">$0 - $50</label>
+            </div>
+
+            <div class="checkbox">
+              <%= check_box_tag "q[basic_infos_salary_in][]", (50..100).to_a %>
+              <label for="rate3">$50 - $100 </label>
+            </div>
+
+            <div class="checkbox">
+              <input type="checkbox" id="rate4" name="rate">
+              <label for="rate4">$100 - $200 </label>
+            </div>
+
+            <div class="checkbox">
+              <%= check_box_tag "q[basic_infos_salary_gt_any][]", 200 %>
+              <label for="rate5">$200+ </label>
+            </div>
+        </div>
+
+        <div class="form-group col-xs-12 col-sm-4">
+          <h6>Sort by</h6>
+          <div class="radio">
+            <input type="radio" name="sortby" id="sortby1" value="option1" checked>
+            <label for="sortby1">Relevance</label>
+          </div>
+<!-- 
+          <div class="radio">
+            <input type="radio" name="sortby" id="sortby2" value="option2">
+            <label for="sortby2">Highest rate first</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" name="sortby" id="sortby3" value="option3">
+            <label for="sortby3">Lowest rate first</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" name="sortby" id="sortby4" value="option4">
+            <label for="sortby4">Highest degree first</label>
+          </div>
+
+          <div class="radio">
+            <input type="radio" name="sortby" id="sortby5" value="option5">
+            <label for="sortby5">Lowest degree first</label>
+          </div> -->
+        </div>
+      </div>
+      <div class="button-group">
+        <div class="action-buttons">
+          <button class="btn btn-primary">Apply filter</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</header>

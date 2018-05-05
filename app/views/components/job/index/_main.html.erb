@@ -1,0 +1,17 @@
+<main>
+  <section class="no-padding-top bg-alt">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <br>
+          <h5>Search result </h5>
+        </div>
+        <div class="text-center"><%= paginate @jobs %></div>
+        <% @jobs.each do |job| %>
+          <%= render "components/job/job_item_type1", job: job %>
+        <% end %>
+        <div class="text-center"><%= paginate @jobs %></div>
+      </div>
+    </div>
+  </section>
+</main>

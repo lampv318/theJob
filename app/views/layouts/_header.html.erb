@@ -32,10 +32,16 @@
         <a class="btn btn-sm btn-primary" href="<%= login_path %>">Login</a> or <a href="<%= signup_path %>">register</a>
       </div>
     <% end %>
+    <!-- search form -->
+    <div class = "pull-right">
+      <%= form_with url: qsearch_path, local: true, method: :get do |f|%>
+      <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"}, placeholder: "search name or email..." %>
+      <% end %>
+    </div>
     <!-- END User account -->
     <!-- Navigation menu -->
     <ul class="nav-menu">
-      <%= link_to "Home", root_path %>
+      <li><%= link_to "Home", root_path %></li> 
       <li>
         <a href="#">Position</a>
         <ul>
@@ -78,5 +84,5 @@
     </ul>
     <!-- END Navigation menu -->
   </div>
-</nav>
+  </nav>
 <!-- END Navigation bar -->

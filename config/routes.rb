@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     delete "logout", to: "sessions#destroy"
   end
 
-  resources :users do 
+  resources :users, only: :create do 
     resources :resumes
     resources :jobs
   end

@@ -30,36 +30,6 @@ ActiveRecord::Schema.define(version: 20180503083931) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "headline"
-    t.string "description"
-    t.string "location"
-    t.integer "employee"
-    t.string "website"
-    t.integer "founder"
-    t.integer "phone"
-    t.string "email"
-    t.string "avatar"
-    t.string "cover_image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "company_details", force: :cascade do |t|
-    t.integer "company_id"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "company_users", force: :cascade do |t|
-    t.integer "company_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "educations", force: :cascade do |t|
     t.integer "resume_id"
     t.string "avatar"
@@ -123,18 +93,6 @@ ActiveRecord::Schema.define(version: 20180503083931) do
     t.integer "resume_id"
     t.string "name"
     t.integer "proficiency"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "social_companies", force: :cascade do |t|
-    t.integer "company_id"
-    t.string "facebook_link"
-    t.string "twitter_link"
-    t.string "google_link"
-    t.string "github_link"
-    t.string "youtube_link"
-    t.string "instagram_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new user_param
+    @user = User.new user_params
 
     if @user.save
       sign_in user
@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   attr_reader :user
 
-  def user_param
+  def user_params
     params.require(:user).permit User::ATTRIBUTES_PARAMS
   end
 end

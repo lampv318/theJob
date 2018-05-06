@@ -1,6 +1,5 @@
 <nav class="navbar">
   <div class="container">
-    <!-- Logo -->
     <div class="pull-left">
       <a class="navbar-toggle" href="#" data-toggle="offcanvas"><i class="ti-menu"></i></a>
       <div class="logo-wrapper">
@@ -8,8 +7,6 @@
         <a class="logo-alt" href="/"><img src="https://raw.githubusercontent.com/lampv318/image/master/logo.png" alt="logo-alt"></a>
       </div>
     </div>
-    <!-- END Logo -->
-    <!-- User account -->
     <% if user_signed_in? %>
       <div class="pull-right">
         <div class="dropdown user-account">
@@ -18,8 +15,10 @@
               <% if current_user.basic_infos.first.link_avatar %>
                 <img src="<%= current_user.basic_infos.first.link_avatar %>" alt="avatar">
               <% else %>
-                <img src="<%= resume.basic_infos.first.user_avatar %>" alt="avatar">
+                <img src="<%= current_user.basic_infos.first.user_avatar %>" alt="avatar" %>
               <% end %>
+            <% else %>
+              <img src="https://raw.githubusercontent.com/lampv318/image/master/noavatar-1.jpg">
             <% end %>
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
@@ -32,14 +31,11 @@
         <a class="btn btn-sm btn-primary" href="<%= login_path %>">Login</a> or <a href="<%= signup_path %>">register</a>
       </div>
     <% end %>
-    <!-- search form -->
     <div class = "pull-right">
       <%= form_with url: qsearch_path, local: true, method: :get do |f|%>
       <%= f.text_field :q, type: "search", data: {behavior: "autocomplete"}, placeholder: "search name or email..." %>
       <% end %>
     </div>
-    <!-- END User account -->
-    <!-- Navigation menu -->
     <ul class="nav-menu">
       <li><%= link_to "Home", root_path %></li> 
       <li>
@@ -49,7 +45,7 @@
           <% if user_signed_in? %>
             <li><a href="<%= new_user_job_path(current_user) %>">Post a job</a></li>
             <li><a href="<%= manager_jobs_path %>">Manage jobs</a></li>
-            <li><a href="job-candidates.html">Candidates</a></li>
+            <li><a href="#">Candidates</a></li>
           <% else %>
             <li><a href="<%= login_path %>">Post a job</a></li>
             <li><a href="<%= login_path %>">Manage jobs</a></li>
@@ -82,7 +78,5 @@
         </ul>
       </li>
     </ul>
-    <!-- END Navigation menu -->
   </div>
-  </nav>
-<!-- END Navigation bar -->
+</nav>

@@ -26,11 +26,11 @@
   </head>
 
   <body>
-    <%= render "layouts/header" %>
+    <%= render "layouts/header" unless (current_page?(login_path) || current_page?(signup_path)) %>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
     <%= yield %>
-    <%= render "layouts/footer" %>
+    <%= render "layouts/footer" unless (current_page?(login_path) || current_page?(signup_path)) %>
   </body>
 </html>

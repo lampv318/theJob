@@ -35,5 +35,6 @@ Rails.application.routes.draw do
   get "/manager-resumes", to: "manager_resumes#index"
   get "search", to: "search#search"
   get "search-resume", to: "search_resume#search"
+  get :qsearch, to: "qsearch#search"
 
 end

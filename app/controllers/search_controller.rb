@@ -2,7 +2,7 @@ class SearchController < ApplicationController
   before_action :set_search
 
   def search
-    @jobs_res = @q.result(distin: true)
+    @jobs_res = @q.result distin: true
     if params[:rate] == "option1"
       @jobs = @jobs_res.salary_lt(50).page params[:page]
     elsif params[:rate] == "option2"
@@ -20,4 +20,5 @@ class SearchController < ApplicationController
   def set_search
     @q= Job.ransack params[:q]
   end
+
 end
